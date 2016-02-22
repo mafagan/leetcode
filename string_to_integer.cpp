@@ -20,6 +20,7 @@ public:
 		
 		long long int res = 0;
 		
+		if (isDigit)
 		for (int i = sp; i < str.length(); i++) {
 			if (isDigit(str[i]) == 0) return 0;
 			
@@ -27,8 +28,8 @@ public:
 			res += str[i] - '0';
 		}
 		
-		if (res > INT_MAX) return 0;
-		
+		if (isNeg == 0 && res > INT_MAX) return 0;
+		else if (isNeg && res < INT_MIN) return 0;
 		return isNeg ? -res : res;
     }
 };
